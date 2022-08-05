@@ -47,10 +47,27 @@ scanners etc.
 ![image](https://user-images.githubusercontent.com/110395336/183129321-bf0ad943-4591-40b9-a64f-8a256db93ed9.png)
 ## Functional Characteristics
 ![Screenshot from 2022-08-03 14-23-02](https://user-images.githubusercontent.com/110395336/183131489-6e15d9db-0a0f-4fc7-81df-1d065e419c87.png)
-
-
+## Functional Simulation
+### Softwares used
+### - iverilog
+### - gtkwave
+### 1) Installing necessary softwares:
+ ```
+$ sudo apt-get install git
+$ sudo apt-get install iverilog 
+$ sudo apt-get install gtkwave 
+```
+### 2) Executing the Project:
+``` 
+$ git clone 
+$ cd iiitb_gc
+$ iverilog iiitb_gc.v iiitb_gc_tb.v -o iiitb_gc
+$ ./iiitb_gc
+$ gtkwave iiitb_gc.vcd
+```
 ## Contributors
-Gadi Ajay Kumar
+Gandi Ajay Kumar
+
 Kunal Ghosh
 ## Acknowledgments
 Kunal Ghosh, Director, VSD Corp. Pvt. Ltd.
