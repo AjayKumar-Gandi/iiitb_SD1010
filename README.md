@@ -45,8 +45,6 @@ scanners etc.
 ![image](https://user-images.githubusercontent.com/110395336/183128339-c2252e4d-a990-4cc5-a953-b88688f6ac59.png)
 ### State transition graph
 ![image](https://user-images.githubusercontent.com/110395336/183129321-bf0ad943-4591-40b9-a64f-8a256db93ed9.png)
-## Functional Characteristics
-![Screenshot from 2022-08-03 14-23-02](https://user-images.githubusercontent.com/110395336/183131489-6e15d9db-0a0f-4fc7-81df-1d065e419c87.png)
 ## Functional Simulation
 ### Softwares used
 ### - iverilog
@@ -65,10 +63,13 @@ $ iverilog iiitb_SDM.v iiitb_SDM_tb.v -o iiitb_SD
 $ ./iiitb_SD
 $ gtkwave sqnsdet_tb.vcd
 ```
-## Contributors
-Gandi Ajay Kumar
+## Functional Characteristics
+![Screenshot from 2022-08-03 14-23-02](https://user-images.githubusercontent.com/110395336/183131489-6e15d9db-0a0f-4fc7-81df-1d065e419c87.png)
 
-Kunal Ghosh
+## Contributors
+- Gandi Ajay Kumar
+- Kunal Ghosh
+
 ## Acknowledgments
 Kunal Ghosh, Director, VSD Corp. Pvt. Ltd.
 ## Contact Information
