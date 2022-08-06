@@ -63,7 +63,7 @@ $ git clone https://github.com/AjayKumar-Gandi/iiitb_SD_1010
 $ cd iiitb_SDM
 $ iverilog iiitb_SDM.v iiitb_SDM_tb.v -o iiitb_SD
 $ ./iiitb_SD
-$ gtkwave seqnsdet_tb.vcd
+$ gtkwave sqnsdet_tb.vcd
 ```
 ## Contributors
 Gandi Ajay Kumar
