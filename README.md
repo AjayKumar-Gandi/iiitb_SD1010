@@ -60,10 +60,10 @@ $ sudo apt-get install gtkwave
 ### 2) Executing the Project:
 ``` 
 $ git clone 
-$ cd iiitb_gc
-$ iverilog iiitb_gc.v iiitb_gc_tb.v -o iiitb_gc
-$ ./iiitb_gc
-$ gtkwave iiitb_gc.vcd
+$ cd iiitb_SDM
+$ iverilog iiitb_SDM.v iiitb_SDM_tb.v -o iiitb_SD
+$ ./iitb_SD
+$ gtkwave seqnsdet_tb.vcd
 ```
 ## Contributors
 Gandi Ajay Kumar
