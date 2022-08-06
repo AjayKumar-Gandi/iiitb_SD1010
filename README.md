@@ -43,7 +43,7 @@ lot of applications like number classification, barcode
 scanners etc.
 ### Mealy machine Block daigram
 ![image](https://user-images.githubusercontent.com/110395336/183128339-c2252e4d-a990-4cc5-a953-b88688f6ac59.png)
-### State transition graph
+### State transition graph for "1010"
 ![image](https://user-images.githubusercontent.com/110395336/183129321-bf0ad943-4591-40b9-a64f-8a256db93ed9.png)
 ## Functional Simulation
 ### Softwares used
