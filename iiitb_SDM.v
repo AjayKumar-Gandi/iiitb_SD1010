@@ -1,4 +1,4 @@
-module seqnsdet(din, reset, clk, y);
+module iiitb_SDM(din, reset, clk, y);
 output reg y;
 input din;
 input clk;
