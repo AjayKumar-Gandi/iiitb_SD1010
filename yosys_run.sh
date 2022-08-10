@@ -1,14 +1,14 @@
 # read design
 
-read_verilog 32bit_carry_ripple_adder.v
+read_verilog iiitb_SDM.v
 
 # generic synthesis
-synth -top ripple_carry_adder
-
+synth -top iiitb_SDM
 # mapping to mycells.lib
-dfflibmap -liberty /usr/local/share/qflow/tech/osu018/osu018_stdcells.lib
-abc -liberty /usr/local/share/qflow/tech/osu018/osu018_stdcells.lib
+dfflibmap -liberty /home/ajaykumar/iiitb_SDM/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty /home/ajaykumar/iiitb_SDM/lib/sky130_fd_sc_hd__tt_025C_1v80.lib -script +strash;scorr;ifraig;retime,{D};strash;dch,-f;map,-M,1,{D}
 clean
 flatten
 # write synthesized design
-write_verilog -assert synth_ripple_carry_adder.v
+write_verilog -noattr iiitb_SDM_synth.v
+
