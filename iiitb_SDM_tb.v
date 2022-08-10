@@ -1,7 +1,7 @@
-module sqnsdet_tb;
+module iiitb_SDM_tb;
 reg din,clk,reset;
 wire y;
-seqnsdet m1(din, reset, clk, y);
+iiitb_SDM m1(din, reset, clk, y);
 initial
 begin
 $dumpfile("sqnsdet_tb.vcd");
