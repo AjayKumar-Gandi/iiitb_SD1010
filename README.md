@@ -57,7 +57,7 @@ $ sudo apt-get install gtkwave
 ```
 ### 2) Executing the Project:
 ``` 
-$ git clone https://github.com/AjayKumar-Gandi/iiitb_SD_1010
+$ git clone https://github.com/AjayKumar-Gandi/iiitb_SD1010
 $ cd iiitb_SDM
 $ iverilog iiitb_SDM.v iiitb_SDM_tb.v -o iiitb_SD
 $ ./iiitb_SD
