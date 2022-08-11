@@ -1,4 +1,4 @@
-# iiitb_SD_1010-->Sequence detector(1010) using mealy finate state machine
+# iiitb_SD1010-->Sequence detector(1010) using mealy finate state machine
 
 
 ## Sequence Detector Using Mealy
