@@ -1,4 +1,4 @@
-# iiitb_SD1010-->Sequence detector(1010) using mealy finate state machine
+# iiitb_sd1010-->Sequence detector(1010) using mealy finate state machine
 
 
 ## Sequence Detector Using Mealy
@@ -57,8 +57,8 @@ $ sudo apt-get install gtkwave
 ```
 ### 2) Executing the Project:
 ``` 
-$ git clone https://github.com/AjayKumar-Gandi/iiitb_SD1010
-$ cd iiitb_SD1010
+$ git clone https://github.com/AjayKumar-Gandi/iiitb_sd1010
+$ cd iiitb_sd1010
 $ iverilog iiitb_SDM.v iiitb_SDM_tb.v -o iiitb_SD
 $ ./iiitb_SD
 $ gtkwave sqnsdet_tb.vcd
