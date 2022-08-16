@@ -6,7 +6,9 @@ initial
 begin
 $dumpfile("sqnsdet_tb.vcd");
 $dumpvars(0);
-reset=0       ;clk=0;din=0;
+clk=0;din=0;
+reset=1;
+#10 reset=0;
 $monitor($time, , ,"c=%b",clk,,"y=%b",y,,"r=%b",reset,,"d=%b",din);
 #10 din=0;
 #10 din=1;
