@@ -1,64 +1,55 @@
 module iiitb_SDM(din, reset, clk, y);
-output reg y;
 input din;
 input clk;
 input reset;
-reg [1:0] cst, nst;
+output reg y;
+reg [2:0] cst, nst;
 parameter S0 = 2'b00,
           S1 = 2'b01,
           S2 = 2'b10,
           S3 = 2'b11;
-always @(cst or din)
- begin
- case (cst)
-   S0: if (din == 1'b1)
-          begin
-         nst = S1;
-          y=1'b0;
-          end
-      else
-          begin
-           nst = cst;
-          y=1'b0;
-          end
-   S1: if (din == 1'b0)
-          begin
-        nst = S2;
-          y=1'b0;
-          end
-       else
-          begin
-           nst = cst;
-          y=1'b0;
-          end
-   S2: if (din == 1'b1)
-          begin
-         nst = S3;
-          y=1'b0;
-          end    
-            else
-          begin
-           nst = S0;
-          y=1'b0;
-          end
-   S3: if (din == 1'b0)
-          begin
-         nst = S2;
-          y=1'b1;
-          end
-       else
-          begin
-          nst = S1;
-          y=1'b0;
-          end
-   default: nst = S0;
-  endcase
-end
-always@(posedge clk)
+always@(posedge clk, posedge reset)
 begin
-           if (reset)
+           if (reset==1)
              cst <= S0;
            else
              cst <= nst;
+end          
+always @(cst , din)
+ begin
+ case (cst)
+   S0:begin 
+        if (din == 1'b1)
+           nst <= S1;
+        else
+          nst <= cst;
+      end
+   S1: begin
+        if (din == 1'b0)
+          nst <= S2;
+         else
+          nst <= cst;
+      end          
+   S2: begin
+        if (din == 1'b1)
+           nst <= S3; 
+        else          
+           nst <= S0; 
+      end  
+   S3: begin
+       if (din == 1'b0)          
+         nst <= S2; 
+       else          
+          nst <= S1;
+       end
+   default: nst <= S0;
+  endcase
+end
+always @ (posedge clk) begin
+    if (reset==1) y <= 1'b0;
+    else begin
+      if (~din & (cst == S3)) y <= 1'b1;
+      else y <= 1'b0;
+    end
 end
 endmodule
