@@ -64,8 +64,50 @@ $ ./iiitb_SD
 $ gtkwave sqnsdet_tb.vcd
 ```
 ## Functional Characteristics
-![Screenshot from 2022-08-03 14-23-02](https://user-images.githubusercontent.com/110395336/183131489-6e15d9db-0a0f-4fc7-81df-1d065e419c87.png)
-
+![image](https://user-images.githubusercontent.com/110395336/184929814-e6369e1f-e2fc-41d0-9fd1-713cfa97f267.png)
+# Synthesizing Verilog Code
+## About Yosys
+#### This is a framework for RTL synthesis tools. It currently has extensive Verilog-2005 support and provides a basic set of synthesis algorithms for various application domains.
+The software used to run gate level synthesis is Yosys. Yosys is a framework for Verilog RTL synthesis. It currently has extensive Verilog-2005 support and provides a basic set of synthesis algorithms for various application domains. Yosys can be adapted to perform any synthesis job by combining the existing passes (algorithms) using synthesis scripts and adding additional passes as needed by extending the Yosys C++ code base.
+## Yosys Installing Commands
+```
+git clone https://github.com/YosysHQ/yosys.git
+make
+sudo make install make test
+```
+## Commands for Synthesizig the verilog code
+```
+# read design
+read_verilog iiitb_SDM.v
+# generic synthesis
+synth -top iiitb_SDM
+# mapping to mycells.lib
+read_liberty -lib //home/ajaykumar/iiitb_SD_1010/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+dfflibmap -liberty /home/ajaykumar/iiitb_SD_1010/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty /home/ajaykumar/iiitb_SD_1010/lib/sky130_fd_sc_hd__tt_025C_1v80.lib #-script +strash;scorr;ifraig;retime,{D};strash;dch,-f;map,-M,1,{D}
+opt
+clean
+flatten
+# write synthesized design
+write_verilog -noattr iiitb_SDM_synth.v
+stat
+show
+```
+On running the yosys script, we get the following output:
+### Synthesized Model
+![image](https://user-images.githubusercontent.com/110395336/184931699-79da0b71-fc41-4036-9859-938eaa1ff0a4.png)
+### Statistics
+![image](https://user-images.githubusercontent.com/110395336/184932241-fa07b4a9-4e6e-4906-9a2e-c2a13ca6613d.png)
+## Gate Level Simulation GLS
+GLS stands for gate level simulation. When we write the RTL code, we test it by giving it some stimulus through the testbench and check it for the desired specifications. Similarly, we run the netlist as the design under test (dut) with the same testbench. Gate level simulation is done to verify the logical correctness of the design after synthesis. Also, it ensures the timing of the design.
+##### Commands to run the GLS are given below.
+```
+iverilog -DFUNCTIONAL -DUNIT_DELAY=#0 verilog_model/primitives.v verilog_model/sky130_fd_sc_hd.v iiitb_SDM_synth.v iiitb_SDM_tb.v
+```
+### Gate level Simulation Waveform
+![image](https://user-images.githubusercontent.com/110395336/184933297-39b5e02a-8e7c-4b67-9cc0-ee86989c5890.png)
+### Observation
+Pre level simulation and post level simulation waverforms are matched.
 ## Contributors
 - Gandi Ajay Kumar
 - Kunal Ghosh
