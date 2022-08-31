@@ -235,8 +235,9 @@ Here we are going to customise our layout by including our custom made **sky130_
      
    - The image showing the invoked magic tool using the above command:
      
-     ![Screenshot from 2022-08-30 18-04-31](https://user-images.githubusercontent.com/110079631/187439712-1d3dcbbd-8b00-4eae-a78e-4f19694d4234.png)
+      ![image](https://user-images.githubusercontent.com/110395336/187684779-727b5dc5-f00a-4ad5-af5a-eef4872c6a6a.png)
 
+     
    - The next step is setting `port class` and `port use` attributes. The "class" and "use" properties of the port have no internal meaning to magic but are used by the LEF and DEF format read and write routines, and match the LEF/DEF CLASS and USE properties for macro cell pins. These attributes are set in tkcon window (after selecting each port on layout window. A keyboard shortcut would be,repeatedly pressing **s** till that port gets highlighed).
    - The tkcon command window of the port classification is shown in the image below:
           
