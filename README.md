@@ -96,10 +96,12 @@ show
 ```
 On running the yosys script, we get the following output:
 ### Synthesized Model
-![image](https://user-images.githubusercontent.com/110395336/187693991-33a369e2-9784-46ed-b50f-cf767f10a000.png)
+![image](https://user-images.githubusercontent.com/110395336/187706086-d16dcce2-355e-4e6f-8f10-fe48969e4964.png)
+
 
 ### Statistics
-![image](https://user-images.githubusercontent.com/110395336/187694147-c9da9ca6-74a2-404d-82a1-f8ac0d7c242f.png)
+![image](https://user-images.githubusercontent.com/110395336/187706228-7809348c-2c66-4478-b0bf-f704e71ccba7.png)
+
 
 ## Gate Level Simulation GLS
 GLS stands for gate level simulation. When we write the RTL code, we test it by giving it some stimulus through the testbench and check it for the desired specifications. Similarly, we run the netlist as the design under test (dut) with the same testbench. Gate level simulation is done to verify the logical correctness of the design after synthesis. Also, it ensures the timing of the design.
