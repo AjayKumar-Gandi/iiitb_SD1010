@@ -246,78 +246,81 @@ Here we are going to customise our layout by including our custom made **sky130_
    
       ![lef_write](https://user-images.githubusercontent.com/110079631/187439794-340e3c4d-65fc-48ad-8c2b-12ee5054e69f.PNG)
                
-- ***2 . INCLUDING THE SKY130_VSDINV CELL***
+- ***2 .INCLUDING THE SKY130_VSDINV CELL***
 
 
-Move the ```sky130_fd_sc_hd__fast.lib```,```sky130_fd_sc_hd__slow.lib```,```sky130_fd_sc_hd__typical.lib```,```sky130_vsdinv.lef``` files to your design ```src``` folder.
+   Move the ```sky130_fd_sc_hd__fast.lib```,```sky130_fd_sc_hd__slow.lib```,```sky130_fd_sc_hd__typical.lib```,```sky130_vsdinv.lef``` files to your          design ```src``` folder.
 
-![image](https://user-images.githubusercontent.com/110395336/187533590-2dda38de-cb10-4c9e-8d37-dbd700242aad.png)
 
- - Next , Modify the json file by including the following lines:
+  ![image](https://user-images.githubusercontent.com/110395336/187533590-2dda38de-cb10-4c9e-8d37-dbd700242aad.png)
 
-     ```
-     "GLB_RESIZER_TIMING_OPTIMIZATIONS": true,
+  - Next , Modify the json file by including the following lines:
+
+    ```
+    "GLB_RESIZER_TIMING_OPTIMIZATIONS": true,
     "CLOCK_PERIOD": 65,
     "PL_RANDOM_GLB_PLACEMENT": 1,
     "PL_TARGET_DENSITY": 0.5,
-    "FP_SIZING" : "relative",
+    "FP_SIZING" : "relative",    
+    "LIB_SYNTH": "dir::src/sky130_fd_sc_hd__typical.lib",
+    "LIB_FASTEST": "dir::src/sky130_fd_sc_hd__fast.lib",
+    "LIB_SLOWEST": "dir::src/sky130_fd_sc_hd__slow.lib",
+    "LIB_TYPICAL": "dir::src/sky130_fd_sc_hd__typical.lib",
+    "TEST_EXTERNAL_GLOB": "dir::../iiitb_sd101011/src/*",
     
-"LIB_SYNTH": "dir::src/sky130_fd_sc_hd__typical.lib",
-"LIB_FASTEST": "dir::src/sky130_fd_sc_hd__fast.lib",
-"LIB_SLOWEST": "dir::src/sky130_fd_sc_hd__slow.lib",
-"LIB_TYPICAL": "dir::src/sky130_fd_sc_hd__typical.lib",
-"TEST_EXTERNAL_GLOB": "dir::../iiitb_sd101011/src/*",
+    ```
 
-     ```
-
- Invoking openlane by following command.
- ```
- sudo make mount
- ```
-![image](https://user-images.githubusercontent.com/110395336/187534485-5cb0153a-70f5-467f-a73b-6df3e15e2f07.png)
+  Invoking openlane by following command.
+ 
+   ```
+   sudo make mount
+   ```
+   ![image](https://user-images.githubusercontent.com/110395336/187534485-5cb0153a-70f5-467f-a73b-6df3e15e2f07.png)
 
 - ***3 . INTERACTIVE MODE:***
-   We need to run the openlane now in the interactive mode to include our custom made lef file before synthesis.Such that the openlane recognises our lef files during the flow for mapping.
-      - **1. Running openlane in interactive mode:**
+
+    We need to run the openlane now in the interactive mode to include our custom made lef file before synthesis.Such that the openlane recognises our lef      files during the flow for mapping.
+    - **1. Running openlane in interactive mode:**
         The command to the run the flow in interactive mode is given below:
         ```
-        ./flow.tcl -interactive
+        ./flow.tcl -interactive        
         ```
         ![image](https://user-images.githubusercontent.com/110395336/187535565-631382e7-1b25-4171-b06a-881aa1c887d8.png)
 
 
-      - **2. Preparing the design and including the lef files:**
-        The commands to prepare the design and overwite in a existing run folder the reports and results along with the command to include the lef files is given below:
-        ```
+    - **2. Preparing the design and including the lef files:**
+      
+        The commands to prepare the design and overwite in a existing run folder the reports and results along with the command to include the lef files is          given below:
+          ```
         prep -design iiitb_sd101011 -tag run -overwrite
         set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
         add_lefs -src $lefs
-        ```
-       ![image](https://user-images.githubusercontent.com/110395336/187536600-a3178173-33cd-4934-8c48-e4a3e1e954ef.png)
+          ```
+        ![image](https://user-images.githubusercontent.com/110395336/187536600-a3178173-33cd-4934-8c48-e4a3e1e954ef.png)
 
 
-  - ***4 . SYNTHESIS:***
-      * **1. To Invoke synthesis** type ```run_synthesis```.This runs the synthesis where yosys translates RTL into circuit using generic components and abc maps the circuit to Standard Cells.
-         ![image](https://user-images.githubusercontent.com/110395336/187537403-dfe23aa9-7dca-4ac7-b285-0f968e814320.png)
+     - ***3 . SYNTHESIS:***
+        * **1. To Invoke synthesis** type ```run_synthesis```.This runs the synthesis where yosys translates RTL into circuit using generic components and abc maps the circuit to Standard Cells.
+           ![image](https://user-images.githubusercontent.com/110395336/187537403-dfe23aa9-7dca-4ac7-b285-0f968e814320.png)
 
 
-      * **2. The Pre synthesized netlist** 
-      ![image](https://user-images.githubusercontent.com/110395336/187537991-99e2aba9-5e8d-4687-be4a-41df09ce4d2c.png)
+        * **2. The Pre synthesized netlist** 
+      
+           ![image](https://user-images.githubusercontent.com/110395336/187537991-99e2aba9-5e8d-4687-be4a-41df09ce4d2c.png)
 
-      * **3. The synthesized netlist** 
-      ![image](https://user-images.githubusercontent.com/110395336/187538256-f8a5f450-5efd-4f6d-a79f-4fc01342f8ce.png)
+        * **3. The synthesized netlist** 
+      
+           ![image](https://user-images.githubusercontent.com/110395336/187538256-f8a5f450-5efd-4f6d-a79f-4fc01342f8ce.png)
 
-      * **4. Calcuation of Flop Ratio:**
+        * **4. Calcuation of Flop Ratio:**
   
-        ```
-  
-        Flop ratio = Number of D Flip flops 
+          ```
+          Flop ratio = Number of D Flip flops 
                      ______________________
                      Total Number of cells
-  
-        ```
+            ```
               
-  - ***5 . FLOORPLAN***
+   - ***4. FLOORPLAN***
       
       * **1. Importance of files in increasing priority order:**
 
@@ -337,6 +340,7 @@ Move the ```sky130_fd_sc_hd__fast.lib```,```sky130_fd_sc_hd__slow.lib```,```sky1
         ```Note: Usually, vertical metal layer and horizontal metal layer values will be 1 more than that specified in the file```
         
       * **3.Use the command:** `run_floorplan`.
+      
          ![image](https://user-images.githubusercontent.com/110395336/187539212-80e6fba2-2dd6-4d4a-89e8-4b290884b728.png)
 
             
@@ -350,33 +354,36 @@ Move the ```sky130_fd_sc_hd__fast.lib```,```sky130_fd_sc_hd__slow.lib```,```sky1
       
         ![image](https://user-images.githubusercontent.com/110395336/187540262-e4fef3ac-b546-4daf-9765-c6a0e30a1d68.png)
 
-***6 . PLACEMENT***
- **1. The next step in the OpenLANE ASIC flow is** placement. The synthesized netlist is to be placed on the floorplan. Placement is perfomed in 2 stages:
-        1. Global Placement: It finds optimal position for all cells which may not be legal and cells may overlap. Optimization is done through reduction of half parameter wire length.
-        2. Detailed Placement: It alters the position of cells post global placement so as to legalise them.        
+   - ***5. PLACEMENT***
 
-Type the following command to run placement
-```
-run_placement
-```
-![image](https://user-images.githubusercontent.com/110395336/187541198-b4d4d532-3c57-4fb5-941f-39ddc285aa4f.png)
-* **3. Post placement:** the design can be viewed on magic within ```results/placement``` directory.
-        Run the follwing command in that directory:
+      **1. The next step in the OpenLANE ASIC flow is** placement. The synthesized netlist is to be placed on the floorplan. Placement is perfomed in 2                stages:
+        1. Global Placement: It finds optimal position for all cells which may not be legal and cells may overlap. Optimization is done through reduction              of half parameter wire length.
+        2. Detailed Placement: It alters the position of cells post global placement so as to legalise them.
+      
+        Type the following command to run placement
+      
         ```
-        magic -T /home/ajaykumar/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read iiitb_SDM.def &
+        run_placement
         ```
-         ![image](https://user-images.githubusercontent.com/110395336/187542348-dba3ac86-8da2-49f3-ba9a-9a585f1ca04a.png)
+        ![image](https://user-images.githubusercontent.com/110395336/187541198-b4d4d532-3c57-4fb5-941f-39ddc285aa4f.png)
+      
+      **2. Post placement:** the design can be viewed on magic within ```results/placement``` directory.    
+      Run the follwing command in that directory:         
+      ```
+      magic -T /home/ajaykumar/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read iiitb_SDM.def &
+      ```
+      ![image](https://user-images.githubusercontent.com/110395336/187542348-dba3ac86-8da2-49f3-ba9a-9a585f1ca04a.png)
 
-      * **4. sky130_vsdinv cell post placement:**
+      **3. sky130_vsdinv cell post placement:**
      
-         ![image](https://user-images.githubusercontent.com/110395336/187543023-77fb46ec-0bb5-4695-9e10-02f5b9986829.png)
+      ![image](https://user-images.githubusercontent.com/110395336/187543023-77fb46ec-0bb5-4695-9e10-02f5b9986829.png)
 
-      * **5. Area report post placement_resizing:**
+      **4. Area report post placement_resizing:**
+     
+      ![image](https://user-images.githubusercontent.com/110395336/187543993-37608979-f777-49c9-9a9e-bd2a1ba5f10c.png)
 
-       ![image](https://user-images.githubusercontent.com/110395336/187543993-37608979-f777-49c9-9a9e-bd2a1ba5f10c.png)
 
-
-- ***7 . CLOCK TREE SYNTHESIS***
+   - ***6 . CLOCK TREE SYNTHESIS***
          
       * **1. The purpose** of building a clock tree is enable the clock input to reach every element and to ensure a zero clock skew. H-tree is a common methodology followed in CTS.
         Before attempting a CTS run in TritonCTS tool, if the slack was attempted to be reduced in previous run, the netlist may have gotten modified by cell replacement techniques. Therefore, the verilog file needs to be modified using the ```write_verilog``` command. Then, the synthesis, floorplan and placement is run again. 
@@ -396,9 +403,9 @@ run_placement
 
 
       
-## 11. Routing
 
-***8 . ROUTING***
+
+  - ***7 . ROUTING***
           
       * **1. OpenLANE uses the TritonRoute tool for routing. There are 2 stages of routing:**
         1. Global routing: Routing region is divided into rectangle grids which are represented as course 3D routes (Fastroute tool).
@@ -409,24 +416,30 @@ run_placement
         3. Uses MILP based panel routing scheme
         4. Intra-layer parallel and inter-layer sequential routing framework
 
-### Type the following command to run placement
+#### Type the following command to run placement
 ```
-run_routing
+     run_routing
 ```
 ![image](https://user-images.githubusercontent.com/110395336/187546087-ab3df917-3070-4f6c-bba4-04ccb1a1e9fb.png)
 
-### 11.1. Routing 
+### 1. Routing 
+
+  * **1. Layout in magic tool post routing:** the design can be viewed on magic within ```results/routing``` directory.
+       
+       Run the follwing command in that directory:
+       ```
+         magic -T /home/ajaykumar/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read iiitb_.def &
+       ```
 
 ![image](https://user-images.githubusercontent.com/110395336/187546774-eccd912a-cd79-460b-9d9f-e17e79a8fc65.png)
 
 In tkcon terminal type the following command to know whether the cell is present or not
-
-```getcell sky130_vsdinv
 ```
-
+getcell sky130_vsdinv
+```
 ![image](https://user-images.githubusercontent.com/110395336/187546972-9a1efed8-e138-4e71-9e1c-a62d470007df.png)
+***One sky130_vsdinv cell is present in the design***
 
-**One sky130_vsdinv cell is present in the design**
 
 **Expanded version of sky130_vsdinv cell**
 
@@ -434,8 +447,8 @@ In tkcon terminal type the following command to know whether the cell is present
 
 
 
-## 12. Reports
-f![image](https://user-images.githubusercontent.com/110395336/187548000-66856f9b-295b-4f26-8755-bd8bc2580a21.png)
+## Reports
+![image](https://user-images.githubusercontent.com/110395336/187548000-66856f9b-295b-4f26-8755-bd8bc2580a21.png)
 ![image](https://user-images.githubusercontent.com/110395336/187548021-25f07c76-3f6b-4930-9ff4-66a2ae2835d5.png)
 ![image](https://user-images.githubusercontent.com/110395336/187548050-e7c0bf85-1531-490d-8726-9faf8cb88777.png)
 
