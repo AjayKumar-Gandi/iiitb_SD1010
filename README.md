@@ -3,7 +3,7 @@
 
 ## Sequence Detector Using Mealy
 In this design, I am going to detect the 
-sequence “1010” using Mealy finite state machine. 
+sequence “101011” using Mealy finite state machine. 
 Mealy finite state machine is used for faster generation 
 of output, Mealy will be faster, in the sense that output 
 will change as soon as an input transition occurs
@@ -43,8 +43,8 @@ lot of applications like number classification, barcode
 scanners etc.
 ### Mealy machine Block daigram
 ![image](https://user-images.githubusercontent.com/110395336/183128339-c2252e4d-a990-4cc5-a953-b88688f6ac59.png)
-### State transition graph for "1010"
-![image](https://user-images.githubusercontent.com/110395336/183129321-bf0ad943-4591-40b9-a64f-8a256db93ed9.png)
+### State transition graph for "101011"
+![image](https://user-images.githubusercontent.com/110395336/187689661-d409cba3-f458-49a1-a3f5-aaf9908d57a1.png)
 ## Functional Simulation
 ### Softwares used
 ### - iverilog
@@ -64,7 +64,8 @@ $ ./iiitb_SD
 $ gtkwave sqnsdet_tb.vcd
 ```
 ## Functional Characteristics
-![image](https://user-images.githubusercontent.com/110395336/184929814-e6369e1f-e2fc-41d0-9fd1-713cfa97f267.png)
+![image](https://user-images.githubusercontent.com/110395336/187692358-8cf1b616-3e29-406f-9bf5-56748395c829.png)
+
 # Synthesizing Verilog Code
 ## About Yosys
 #### This is a framework for RTL synthesis tools. It currently has extensive Verilog-2005 support and provides a basic set of synthesis algorithms for various application domains.
@@ -84,7 +85,7 @@ synth -top iiitb_SDM
 # mapping to mycells.lib
 read_liberty -lib //home/ajaykumar/iiitb_sd101011/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 dfflibmap -liberty /home/ajaykumar/iiitb_sd101011/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-abc -liberty /home/ajaykumar/iiitb_sd101011/lib/sky130_fd_sc_hd__tt_025C_1v80.lib #-script +strash;scorr;ifraig;retime,{D};strash;dch,-f;map,-M,1,{D}
+abc -liberty /home/ajaykumar/iiitb_sd101011/lib/sky130_fd_sc_hd__tt_025C_1v80.lib -script +strash;scorr;ifraig;retime,{D};strash;dch,-f;map,-M,1,{D}
 opt
 clean
 flatten
@@ -95,9 +96,11 @@ show
 ```
 On running the yosys script, we get the following output:
 ### Synthesized Model
-![image](https://user-images.githubusercontent.com/110395336/184931699-79da0b71-fc41-4036-9859-938eaa1ff0a4.png)
+![image](https://user-images.githubusercontent.com/110395336/187693991-33a369e2-9784-46ed-b50f-cf767f10a000.png)
+
 ### Statistics
-![image](https://user-images.githubusercontent.com/110395336/184932241-fa07b4a9-4e6e-4906-9a2e-c2a13ca6613d.png)
+![image](https://user-images.githubusercontent.com/110395336/187694147-c9da9ca6-74a2-404d-82a1-f8ac0d7c242f.png)
+
 ## Gate Level Simulation GLS
 GLS stands for gate level simulation. When we write the RTL code, we test it by giving it some stimulus through the testbench and check it for the desired specifications. Similarly, we run the netlist as the design under test (dut) with the same testbench. Gate level simulation is done to verify the logical correctness of the design after synthesis. Also, it ensures the timing of the design.
 ##### Commands to run the GLS are given below.
@@ -105,7 +108,8 @@ GLS stands for gate level simulation. When we write the RTL code, we test it by 
 iverilog -DFUNCTIONAL -DUNIT_DELAY=#0 verilog_model/primitives.v verilog_model/sky130_fd_sc_hd.v iiitb_SDM_synth.v iiitb_SDM_tb.v
 ```
 ### Gate level Simulation Waveform
-![image](https://user-images.githubusercontent.com/110395336/184933297-39b5e02a-8e7c-4b67-9cc0-ee86989c5890.png)
+![image](https://user-images.githubusercontent.com/110395336/187694326-9b2cfdf5-75ee-4483-8109-3fb02ff9b548.png)
+
 ### Observation
 Pre level simulation and post level simulation waverforms are matched.
 
