@@ -247,11 +247,12 @@ Here we are going to customise our layout by including our custom made **sky130_
    - The next step is setting `port class` and `port use` attributes. The "class" and "use" properties of the port have no internal meaning to magic but are used by the LEF and DEF format read and write routines, and match the LEF/DEF CLASS and USE properties for macro cell pins. These attributes are set in tkcon window (after selecting each port on layout window. A keyboard shortcut would be,repeatedly pressing **s** till that port gets highlighed).
    - The tkcon command window of the port classification is shown in the image below:
           
-     ![port_define](https://user-images.githubusercontent.com/110079631/187438423-d08803fb-2375-495b-9de7-c46a2aadda00.JPG)
-    
+     ![image](https://user-images.githubusercontent.com/110395336/189738784-d4b4f73e-2088-44a0-a430-71b5e27867cc.png)
+
    - In the next step, use `lef write` command to write the LEF file with the same nomenclature as that of the layout `.mag` file. This will create a **sky130_vsdinv.lef** file in the same folder.
    
-      ![lef_write](https://user-images.githubusercontent.com/110079631/187439794-340e3c4d-65fc-48ad-8c2b-12ee5054e69f.PNG)
+     ![image](https://user-images.githubusercontent.com/110395336/189738920-f163daa7-8d37-4e77-ad1c-aeb8a75571d4.png)
+
                
 - ***2 .INCLUDING THE SKY130_VSDINV CELL***
 
