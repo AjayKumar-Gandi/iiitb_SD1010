@@ -456,27 +456,6 @@ getcell sky130_vsdinv
 
 
 ## Reports
-![image](https://user-images.githubusercontent.com/110395336/187548000-66856f9b-295b-4f26-8755-bd8bc2580a21.png)
-![image](https://user-images.githubusercontent.com/110395336/187548021-25f07c76-3f6b-4930-9ff4-66a2ae2835d5.png)
-![image](https://user-images.githubusercontent.com/110395336/187548050-e7c0bf85-1531-490d-8726-9faf8cb88777.png)
-
-
-## Contributors
-- Gandi Ajay Kumar
-- Kunal Ghosh
-
-## Acknowledgments
-Kunal Ghosh, Director, VSD Corp. Pvt. Ltd.
-## Contact Information
-Gandi Ajay Kumar, Postgraduate Student, International Institute of Information Technology, Bangalore ajaykumar.gandi@iiitb.ac.in
-
-Kunal Ghosh, Director, VSD Corp. Pvt. Ltd. kunalghosh@gmail.com
-## References:
-1.	http://www.vlsifacts.com/mealy-vs-moore-machine/
-2.	https://www.researchgate.net/figure/1010-Detector-a-state-transition-graph-b-state-transition-table-c-state_fig10_220285908
-3.	https://digitalsystemdesign.in/fsm-design/
-
-
 
 ## FlipFlop Statistics:
 
@@ -498,10 +477,28 @@ Kunal Ghosh, Director, VSD Corp. Pvt. Ltd. kunalghosh@gmail.com
 
 
 
+
+
 ## performace report :
 
 ![image](https://user-images.githubusercontent.com/110395336/192580701-fa3da4ff-30f1-42cf-96a4-89b64a4d0f8c.png)
 ![image](https://user-images.githubusercontent.com/110395336/192580768-fe9f9e3b-d947-4fd0-a181-d0dab6b3180e.png)
+
+## Contributors
+- Gandi Ajay Kumar
+- Kunal Ghosh
+
+## Acknowledgments
+Kunal Ghosh, Director, VSD Corp. Pvt. Ltd.
+## Contact Information
+Gandi Ajay Kumar, Postgraduate Student, International Institute of Information Technology, Bangalore ajaykumar.gandi@iiitb.ac.in
+
+Kunal Ghosh, Director, VSD Corp. Pvt. Ltd. kunalghosh@gmail.com
+## References:
+1.	http://www.vlsifacts.com/mealy-vs-moore-machine/
+2.	https://www.researchgate.net/figure/1010-Detector-a-state-transition-graph-b-state-transition-table-c-state_fig10_220285908
+3.	https://digitalsystemdesign.in/fsm-design/
+
 
 
 
