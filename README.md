@@ -477,6 +477,36 @@ Kunal Ghosh, Director, VSD Corp. Pvt. Ltd. kunalghosh@gmail.com
 3.	https://digitalsystemdesign.in/fsm-design/
 
 
+
+## FlipFlop Statistics:
+
+ ![image](https://user-images.githubusercontent.com/110395336/192578653-93fc94c2-ea81-4601-8f7e-3a5d03bc14ee.png)
+
+## FlipFlop to Standard cell ratio:
+
+![image](https://user-images.githubusercontent.com/110395336/192579959-892230fa-0977-4713-941b-5cefbefc6bfb.png)![image](https://user-images.githubusercontent.com/110395336/192580025-4dc5d650-a9e3-4488-9869-b4c57ec04a70.png)
+
+## Power:
+
+![image](https://user-images.githubusercontent.com/110395336/192580263-bc6c79dd-6234-4f55-83b9-83368dbd2807.png)
+
+
+
+## Area of the design :
+
+![image](https://user-images.githubusercontent.com/110395336/192580567-97a1e537-0389-4d58-8724-0b1970030820.png)
+
+
+
+## performace report :
+
+![image](https://user-images.githubusercontent.com/110395336/192580701-fa3da4ff-30f1-42cf-96a4-89b64a4d0f8c.png)
+![image](https://user-images.githubusercontent.com/110395336/192580768-fe9f9e3b-d947-4fd0-a181-d0dab6b3180e.png)
+
+
+
+
+
   
 
 
