@@ -472,6 +472,7 @@ getcell sky130_vsdinv
 
 
 ## Area of the design :
+ Area of the design :6696.910 micro meter sqaure
 
 ![image](https://user-images.githubusercontent.com/110395336/192580567-97a1e537-0389-4d58-8724-0b1970030820.png)
 
