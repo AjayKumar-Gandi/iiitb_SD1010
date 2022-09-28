@@ -406,11 +406,7 @@ Here we are going to customise our layout by including our custom made **sky130_
 ![image](https://user-images.githubusercontent.com/110395336/187545611-c59dcf31-c226-45e1-ace0-1ebcc13ad9f8.png)
 
 
-      * **4. Power report post_cts:**
-![image](https://user-images.githubusercontent.com/110395336/187545734-7e461a1d-2b0f-4015-805d-071a83c3611a.png)
-
-
-      
+         
 
 
   - ***7 . ROUTING***
